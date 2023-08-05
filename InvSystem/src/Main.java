@@ -11,6 +11,7 @@ import java.awt.Font;
 public class Main extends JFrame {
 
 	private JPanel contentPane;
+	private JLabel lblLogin, lblPassword;
 	private JTextField txtUser;
 	private JPasswordField passwordField;
 
@@ -53,12 +54,12 @@ public class Main extends JFrame {
 		passwordField.setBounds(53, 237, 261, 26);
 		contentPane.add(passwordField);
 		
-		JLabel lblLogin = new JLabel("LOG IN");
+		lblLogin = new JLabel("LOG IN");
 		lblLogin.setFont(new Font("Montserrat", Font.PLAIN, 19));
 		lblLogin.setBounds(53, 98, 102, 26);
 		contentPane.add(lblLogin);
 		
-		JLabel lblPassword = new JLabel("PASSWORD");
+		lblPassword = new JLabel("PASSWORD");
 		lblPassword.setFont(new Font("Montserrat", Font.PLAIN, 19));
 		lblPassword.setBounds(53, 201, 126, 26);
 		contentPane.add(lblPassword);
