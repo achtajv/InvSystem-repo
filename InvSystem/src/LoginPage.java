@@ -17,16 +17,21 @@ import java.awt.event.ActionEvent;
 
 
 public class LoginPage extends JFrame {
-
+	
 	private JPanel contentPane;
 	private JLabel lblLogin, lblPassword;
 	private JTextField txtUser;
 	private JPasswordField pwdPassword;
 	private JButton btnSignIn;
 	
-	private HashMap<String, String> loginCredentials = new HashMap<>();
+	private HashMap<String, String> loginCredentials;
 
 	public LoginPage() {
+		DataStorage storeInfo = new DataStorage();
+		loginCredentials = storeInfo.getPeopleInfo();
+		loginCredentials.put("hello", "work");
+		storeInfo.setPeopleInfo(loginCredentials);
+		
 		setResizable(false);
 		setTitle("Java Inventory System | Log-in");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +77,11 @@ public class LoginPage extends JFrame {
 		btnSignIn = new JButton("SIGN IN");
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("I'm clicked");
+				if(loginCredentials.containsKey(txtUser.getText()) && pwdPassword.getText().equals(loginCredentials.get(txtUser.getText()))) {
+					Dashboard moveToDashboard = new Dashboard();
+					moveToDashboard.setVisible(true);
+					dispose();
+				}
 			}
 		});
 		btnSignIn.setEnabled(false);
