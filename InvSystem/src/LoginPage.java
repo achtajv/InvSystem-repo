@@ -29,13 +29,13 @@ public class LoginPage extends JFrame {
 	public LoginPage() {
 		DataStorage storeInfo = new DataStorage();
 		loginCredentials = storeInfo.getPeopleInfo();
-		loginCredentials.put("hello", "work");
+		loginCredentials.put("a", "a");
 		storeInfo.setPeopleInfo(loginCredentials);
 		
 		setResizable(false);
 		setTitle("Java Inventory System | Log-in");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 500);
+		setBounds(100, 100, 785, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
