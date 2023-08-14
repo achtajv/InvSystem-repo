@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 
 public class Dashboard extends JFrame {
 	
-	private JPanel contentPane, panelInventory, panelAddItems, panelPurchase, panelSales;
+	private JPanel contentPane, panelInventory, panelPurchase, panelSales;
 	private JTabbedPane dashboardTP;
 	private JButton btnAdd, btnUpdate, btnDelete, btnPurchase;
 	
@@ -43,6 +43,10 @@ public class Dashboard extends JFrame {
 	private HashMap<String, String> loginCredentials;
 	private JLabel lblSearch;
 	private JTextField textField;
+	private JLabel lblItemList;
+	private JButton btnDecrease;
+	private JButton btnIncrease;
+	private JLabel lblItemPreview;
 
 	public Dashboard() {
 		setUndecorated(false);
@@ -53,7 +57,6 @@ public class Dashboard extends JFrame {
 		//get the max width and height of the device
 		GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	    Rectangle bounds = environment.getMaximumWindowBounds();
-	    GraphicsDevice device = environment.getDefaultScreenDevice();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, bounds.width, bounds.height);
@@ -96,17 +99,17 @@ public class Dashboard extends JFrame {
 		panelPurchase.add(cbCategorySelection);
 		
 		btnAdd = new JButton("ADD");
-		btnAdd.setBounds(425, 699, 85, 52);
+		btnAdd.setBounds(435, 699, 85, 52);
 		btnAdd.setFont(new Font("Montserrat", Font.PLAIN, 15));
 		panelPurchase.add(btnAdd);
 		
 		btnUpdate = new JButton("UPDATE");
-		btnUpdate.setBounds(520, 701, 85, 52);
+		btnUpdate.setBounds(530, 701, 85, 52);
 		btnUpdate.setFont(new Font("Montserrat", Font.PLAIN, 11));
 		panelPurchase.add(btnUpdate);
 		
 		btnDelete = new JButton("DELETE");
-		btnDelete.setBounds(615, 700, 85, 52);
+		btnDelete.setBounds(625, 700, 85, 52);
 		btnDelete.setFont(new Font("Montserrat", Font.PLAIN, 12));
 		panelPurchase.add(btnDelete);
 		
@@ -115,22 +118,22 @@ public class Dashboard extends JFrame {
 		btnPurchase.setFont(new Font("Montserrat", Font.PLAIN, 10));
 		panelPurchase.add(btnPurchase);
 		
-		JLabel lblItemList = new JLabel("ITEMS LIST");
+		lblItemList = new JLabel("ITEMS LIST");
 		lblItemList.setFont(new Font("Montserrat ExtraLight", Font.PLAIN, 20));
 		lblItemList.setBounds(10, 10, 216, 25);
 		panelPurchase.add(lblItemList);
 		
-		JButton btnDecrease = new JButton("-");
+		btnDecrease = new JButton("-");
 		btnDecrease.setFont(new Font("Montserrat", Font.PLAIN, 35));
 		btnDecrease.setBounds(263, 699, 52, 52);
 		panelPurchase.add(btnDecrease);
 		
-		JButton btnIncrease = new JButton("+");
-		btnIncrease.setFont(new Font("Montserrat", Font.PLAIN, 35));
+		btnIncrease = new JButton("+");
+		btnIncrease.setFont(new Font("Montserrat", Font.PLAIN, 32));
 		btnIncrease.setBounds(191, 699, 52, 52);
 		panelPurchase.add(btnIncrease);
 		
-		JLabel lblItemPreview = new JLabel("ITEM PREVIEW");
+		lblItemPreview = new JLabel("ITEM PREVIEW");
 		lblItemPreview.setFont(new Font("Montserrat ExtraLight", Font.PLAIN, 20));
 		lblItemPreview.setBounds(1119, 9, 216, 25);
 		panelPurchase.add(lblItemPreview);
@@ -144,11 +147,6 @@ public class Dashboard extends JFrame {
 		textField.setBounds(565, 57, 312, 21);
 		panelPurchase.add(textField);
 		textField.setColumns(10);
-		
-		//<=======Add Items=======>
-		panelAddItems = new JPanel();
-		dashboardTP.addTab("Add Item", null, panelAddItems, null);
-		panelAddItems.setLayout(null);
 		
 		//<=======Inventory=======>
 		panelInventory = new JPanel();
@@ -174,7 +172,7 @@ public class Dashboard extends JFrame {
 				dispose();
 			}
 		});
-		mntmLogout.setMnemonic(KeyEvent.VK_O);
+		mntmLogout.setMnemonic(KeyEvent.VK_O); //ALT+SHIFTT+O
 		mnOtherOptions.add(mntmLogout);
 		
 		setLocationRelativeTo(null);
