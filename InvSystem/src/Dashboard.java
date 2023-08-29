@@ -1,7 +1,6 @@
 import java.awt.Font;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,39 +24,40 @@ import javax.swing.JTextField;
 
 public class Dashboard extends JFrame {
 	
+	//<==============Panel Purchase Components================>
 	private JPanel contentPane, panelInventory, panelPurchase, panelSales;
 	private JTabbedPane dashboardTP;
-	private JButton btnAdd, btnUpdate, btnDelete, btnPurchase;
+	private JButton btnAdd, btnUpdate, btnDelete, btnPurchase, btnIncrease, btnDecrease;
 	
 	private JMenuBar menuBar;
 	private JMenu mnOtherOptions;
 	private JMenuItem mntmLogout;
 	
-	private JLabel lblSelectCategory;
+	private JLabel lblSelectCategory, lblSearch, lblItemList, lblItemPreview;
 	private JScrollPane scrollPaneListPurchased;
 	private JTextArea textArea;
+	private JTextField txtSearch;
 	private JList listItems;
 	private JComboBox cbCategorySelection;
 	
+	//<==============Panel Inventory Components================>
+	
 	//copy the hashmap from the data storage
 	private HashMap<String, String> loginCredentials;
-	private JLabel lblSearch;
-	private JTextField textField;
-	private JLabel lblItemList;
-	private JButton btnDecrease;
-	private JButton btnIncrease;
-	private JLabel lblItemPreview;
+	private HashMap<String, Image> inventoryDetails;
 
 	public Dashboard() {
-		setUndecorated(false);
-		setTitle("Sister Store | Inventory");
-		DataStorage storeInfo = new DataStorage();
-		loginCredentials = storeInfo.getPeopleInfo();
-		
 		//get the max width and height of the device
 		GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	    Rectangle bounds = environment.getMaximumWindowBounds();
+		Rectangle bounds = environment.getMaximumWindowBounds();
 		
+		//Access the DataStorage
+		DataStorage storeInfo = new DataStorage();
+		loginCredentials = storeInfo.getPeopleInfo();
+		inventoryDetails = storeInfo.getInvDetailsInfo();
+		
+		setUndecorated(false);
+		setTitle("Sister Store | Inventory");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, bounds.width, bounds.height);
 		contentPane = new JPanel();
@@ -143,10 +143,10 @@ public class Dashboard extends JFrame {
 		lblSearch.setBounds(436, 55, 125, 19);
 		panelPurchase.add(lblSearch);
 		
-		textField = new JTextField();
-		textField.setBounds(565, 57, 312, 21);
-		panelPurchase.add(textField);
-		textField.setColumns(10);
+		txtSearch = new JTextField();
+		txtSearch.setBounds(565, 57, 312, 21);
+		panelPurchase.add(txtSearch);
+		txtSearch.setColumns(10);
 		
 		//<=======Inventory=======>
 		panelInventory = new JPanel();
@@ -157,6 +157,8 @@ public class Dashboard extends JFrame {
 		panelSales = new JPanel();
 		dashboardTP.addTab("Sales", null, panelSales, null);
 		
+		
+		//<=======Menu Bar=====>
 		menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 47, 22);
 		contentPane.add(menuBar);
