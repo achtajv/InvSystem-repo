@@ -13,6 +13,8 @@ public class Main extends JFrame {
 	public static void main(String[] args) {
 		
 		//TRIAL ADDED COMMENT
+
+		// nag add pa ako isang comment, ito makikita mo pag nag pull
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
