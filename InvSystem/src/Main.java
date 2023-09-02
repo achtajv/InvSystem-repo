@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 public class Main extends JFrame {
-	
+	//added comment
 	public static void main(String[] args) {
 		
 		//TRIAL ADDED COMMENT
